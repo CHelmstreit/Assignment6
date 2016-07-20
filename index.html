@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Assignment 6 - Pizza Delivery Form</title>
+
+    <!--Jquery-->
+    <script src="scripts/jquery-3.0.0.min.js" type="text/javascript"></script>
+
+    <!--Script-->
+    <script src="scripts/scripts.js" type="text/javascript"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!--Style Sheet-->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug-->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron-narrow.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="#">Home</a></li>
+                    <li role="presentation"><a href="#">About</a></li>
+                    <li role="presentation"><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Welcome!</h3>
+        </div>
+
+        <div class="jumbotron">
+        </div>
+
+        <form id="orderform" onsubmit='return validateForm()' name="orderform">
+            <h1>Delivery Order Form</h1>
+
+            <h2>Delivery Information</h2>
+            <p>Note: All fields containing (*) are required.</p>
+
+            <strong>*Name:</strong>
+            <br>
+            <input class="box" id="name" type="text" name="name">
+            <br>
+
+            <strong>*Address Type:</strong>
+            <br>
+            <select class="box" id="addresstype" name=addresstype onClick="getOtherBox(this.value)">
+                <option value="addresstypeselect" selected>Please select one</option>
+                <option value="house">House</option>
+                <option value="apartment">Apartment</option>
+                <option value="business">Business</option>
+                <option value="campus">Campus</option>
+                <option value="hotel">Hotel</option>
+                <option value="dorm">Dorm</option>
+                <option value="other">Other</option>
+            </select>
+
+            <input type="text" class="box" id="otherbox" placeholder="Please describe" />
+            </br>
+
+            <strong>*Street Address:</strong>
+            <br>
+            <input class="box" id="streetaddress" type="text" name="streetaddress">
+            <br>
+
+            <strong>Apt/Suite/Room #:</strong>
+            <br>
+            <input class="box" id="aptnumber" type="text" name="aptnumber">
+            <br>
+
+            <strong>*City:</strong>
+            <br>
+            <input class="box" id="city" type="text" name="city">
+            <br>
+
+            <strong>*State:</strong>
+            <br>
+            <input class="box" id="state" type="text" name="state">
+            <br>
+
+            <strong>*Zip Code:</strong>
+            <br>
+            <input class="box" id="zipcode" type="text" name="zipcode">
+            <br>
+
+            <strong>*Phone #:</strong>
+            <br>
+            <input class="box" id="phonenumber" type="tel" name="phonenumber">
+            <br>
+
+            <strong>*Email:</strong>
+            <br>
+            <input class="box" id="email" type="email" name="email">
+            <br>
+
+            <h2>Build Your Pizza!</h2>
+
+            <h4>Choose your crust:</h4>
+            <div class="crust">
+                <input type="radio" name="crust" value="handtossed">Hand-Tossed
+                <br>
+                <input type="radio" name="crust" value="thincrust">Thin Crust
+                <br>
+                <input type="radio" name="crust" value="newyork">New York Style
+                <br>
+                <input type="radio" name="crust" value="glutenfree">Gluten Free
+                <br>
+            </div>
+
+            <h4>Cheese options</h4>
+            <select class="list" id="cheese" name=cheese>
+                <option value="LightCheese">Light (No extra charge)</option>
+                <option value="RegularCheese">Regular (No extra charge) </option>
+                <option value="ExtraCheese">Extra (+ $2.99)</option>
+                <option value="DoubleCheese">Double (+ $3.99)</option>
+            </select>
+            <br>
+
+            <h4>Sauce options</h4>
+            <select class="list" id="sauce" name=sauce>
+                <option value="RegularSauce">Regular Tomato (No extra charge) </option>
+                <option value="HeartySauce">Hearty Tomato (+ $0.99)</option>
+                <option value="BBQSauce">BBQ Sauce (+ $1.99)</option>
+            </select>
+            <br>
+
+            <h4>Toppings</h4>
+            <div class="toppings1">
+                <label for="pepperoni">
+                    <input type="checkbox" name="toppings" id="pepperoni" value="pepperoni"> Pepperoni </label>
+                <br>
+                <label for="sausage">
+                    <input type="checkbox" name="toppings" id="sausage" value="sausage"> Sausage </label>
+                <br>
+                <label for="ham">
+                    <input type="checkbox" name="toppings" id="ham" value="ham"> Ham </label>
+                <br>
+                <label for="bacon">
+                    <input type="checkbox" name="toppings" id="bacon" value="bacon"> Bacon </label>
+                <br>
+                <label for="salami">
+                    <input type="checkbox" name="toppings" id="salami" value="salami"> Salami </label>
+                <br>
+                <label for="peppers">
+                    <input type="checkbox" name="toppings" id="peppers" value="peppers"> Peppers </label>
+                <br>
+                <label for="jalepenos">
+                    <input type="checkbox" name="toppings" id="jalepenos" value="jalepenos"> Jalepenos </label>
+                <br>
+                <label for="mushrooms">
+                    <input type="checkbox" name="toppings" id="mushrooms" value="mushrooms"> Mushrooms </label>
+                <br>
+                <label for="pineapple">
+                    <input type="checkbox" name="toppings" id="pineapple" value="pineapple"> Pineapple </label>
+                <br>
+                <label for="onion">
+                    <input type="checkbox" name="toppings" id="onion" value="onion"> Onion </label>
+                <br>
+            </div>
+            <hr>
+
+            <button type="submit" id="submit" value="submit" onclick="validateAnswers">Submit</button>
+
+        </form>
+
+        <footer class="footer ">
+            <p>&copy; 2016 Dices Slices, Inc.</p>
+        </footer>
+
+    </div>
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js "></script>
+</body>
+
+</html>
